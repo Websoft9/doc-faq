@@ -1,21 +1,30 @@
 module.exports = [
   {
-    title: 'Website',
+    title: '技术',
     collapsable: false,
     children: [
       '/',
-      '/privacy',
-      '/site-terms',
-      '/trademark',
+      '/tech-accounts',
+      '/tech-instance',
+      '/tech-dns',
+      '/tech-https',
+      '/tech-smtp',
+      '/tech-backup',
+      '/tech-upgrade',
+      '/tech-troubleshooting',
+      '/tech-tools',
     ]
   },
 
   {
-    title: 'Product',
+    title: '商务',
     collapsable: false,
     children: [
-      '/eula',
-      '/agreement',
+      '/bz-product',
+      '/bz-buy',
+      '/bz-order',
+      ['https://support.websoft9.com/terms.html','Support'],
+      ['https://support.websoft9.com/docs/legal','Legal'],
     ]
   },
   

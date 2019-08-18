@@ -20,3 +20,6 @@ footer: MIT Licensed | Copyright © 2019 Websoft9
 ## 怎么安装
 ## SSL证书
 ## 用浏览器访问“http://公网IP”访问不了
+## 源码存放在哪里？
+## 数据库无法远程连接
+## 网站访问很慢
