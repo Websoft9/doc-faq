@@ -32,7 +32,7 @@ themeConfig: {
 
   //Github 
   repo: 'Websoft9/doc-faq',
-  editLinks: false,
+  editLinks: true,
   docsDir: 'docs',
   docsBranch: 'master',
 

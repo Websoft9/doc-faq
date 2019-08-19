@@ -1,6 +1,6 @@
 module.exports = [
   {
-    title: '技术',
+    title: 'Technology',
     collapsable: false,
     children: [
       '/',
@@ -11,13 +11,14 @@ module.exports = [
       '/tech-smtp',
       '/tech-backup',
       '/tech-upgrade',
+      '/tech-command',
       '/tech-troubleshooting',
       '/tech-tools',
     ]
   },
 
   {
-    title: '商务',
+    title: 'Business',
     collapsable: false,
     children: [
       '/bz-product',

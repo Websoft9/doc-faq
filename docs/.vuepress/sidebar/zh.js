@@ -11,6 +11,7 @@ module.exports = [
       '/zh/tech-smtp',
       '/zh/tech-backup',
       '/zh/tech-upgrade',
+      '/zh/tech-command',
       '/zh/tech-troubleshooting',
       '/zh/tech-tools',
     ]
