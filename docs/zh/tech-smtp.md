@@ -109,6 +109,27 @@ To configure your application to send email through SendGrid’s SMTP service, u
 - Zoho Mail SMTP user name: **Your** **Zoho Mail address** (example@zoho.com or your email address if you use Zoho Mail with your own domain)
 - Zoho Mail SMTP password: **Your** **Zoho Mail password**
 
+### Directmail
+
+Directmail是阿里云的邮件推送服务，相对于免费邮箱来说，自主性更强，同时更稳定可靠 
+下面是Directmail的配置简要流程：
+1. 登录阿里云邮件推送控制台，新增一个发信域名
+   ![新增发信域名](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailadd-websoft9.png)
+2. 根据域名配置要求，在域名控制台完成对应的域名解析，并点击“验证”
+   ![验证](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailverify-websoft9.png)
+3. 验证通过后，设置发信地址
+   ![设置发信地址](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailsetsendm-websoft9.png)
+4. 如果需要接受用户的邮件回复，可以针对此发件地址配套一个回信地址。
+5. 完成所有配置后，您会得到一个如下的SMTP参数
+
+```
+SMTP地址：smtpdm.aliyun.com 
+SMTP用户名：norelpy@smtp.websoft9.cn
+SMTP密码：*******
+SMTP端口：465 需要启用ssl加密
+SMTP端口：80 无需加密 
+```
+
 ## SMTP诊断
 
 如果使用第三方提供的SMTP服务（如qq邮箱、网易邮箱等），配置也没有问题，但是仍然无法发送邮件。请检查如下几个问题：
