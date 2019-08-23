@@ -29,7 +29,7 @@
 - SMTP username: email address
 - SMTP password: 这个密码不是邮箱密码，是需要通过163邮箱SMTP设置去获取的授权码
 
-> 以上仅供快速设置参考，更多详情查看官网文档：[163邮箱SMTP设置](http://help.163.com/09/1223/14/5R7P6CJ600753VB8.html?servCode=6010376)
+> 以上仅供快速设置参考，更多详情查看官网文档：[163邮箱SMTP设置](https://help.163.com/09/1223/14/5R7P6CJ600753VB8.html?servCode=6010376)
 
 
 ### 阿里云邮箱
@@ -114,11 +114,11 @@ To configure your application to send email through SendGrid’s SMTP service, u
 Directmail是阿里云的邮件推送服务，相对于免费邮箱来说，自主性更强，同时更稳定可靠 
 下面是Directmail的配置简要流程：
 1. 登录阿里云邮件推送控制台，新增一个发信域名
-   ![新增发信域名](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailadd-websoft9.png)
+   ![新增发信域名](https://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailadd-websoft9.png)
 2. 根据域名配置要求，在域名控制台完成对应的域名解析，并点击“验证”
-   ![验证](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailverify-websoft9.png)
+   ![验证](https://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailverify-websoft9.png)
 3. 验证通过后，设置发信地址
-   ![设置发信地址](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailsetsendm-websoft9.png)
+   ![设置发信地址](https://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-dmailsetsendm-websoft9.png)
 4. 如果需要接受用户的邮件回复，可以针对此发件地址配套一个回信地址。
 5. 完成所有配置后，您会得到一个如下的SMTP参数
 

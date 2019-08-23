@@ -9,7 +9,7 @@
 #### Windows远程桌面连接失败？
 
 检查账号和密码是正确，请保证[服务器安全组](/zh/tech-instance.md)的3389端口是开启的，下图是排查方法  
-![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-guzhangpaichu.png)
+![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-guzhangpaichu.png)
 
 #### 服务器无法重启？
 

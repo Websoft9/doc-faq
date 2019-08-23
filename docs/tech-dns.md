@@ -7,7 +7,7 @@
 为了使网站可以通过域名访问，配置域名分为两个步骤：
 
 *   **域名解析**：在域名的控制台上做一个将域名（或子域名）指向IP的操作(下图示例)
-![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/common/domain-websoft9.png)
+![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/domain-websoft9.png)
 
 *   **域名绑定**：域名绑定指一台服务器在多网站部署的时候，通过**虚拟主机配置文件**，将每个域名绑定到其对应的网站目录，从而达到每个网站都可以通过域名访问且相会不会干扰的效果。
 

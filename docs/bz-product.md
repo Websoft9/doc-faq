@@ -8,7 +8,7 @@ Websoft9公司在主流的云平台上提供不少开源软件产品，交付模
 
 以LAMP环境为例，部署到您的服务器的是下图的架构：
 
-![img](http://libs.websoft9.com/Websoft9/DocsPicture/zh/wamp/php-infra-websoft9.png)
+![img](https://libs.websoft9.com/Websoft9/DocsPicture/zh/wamp/php-infra-websoft9.png)
 
 LAMP环境的价值是让用户安装、发布和管理PHP网站变得更简单、更稳定，为了满足用户的需求，我们就会将PHP应用所需的基础组件：PHP语言，数据库，Web服务器等进行组合优化，提前安装ssl,smtp等扩展，实际上安装步骤达到100多个。为了用户有可视化的体验，我们又开发了9Panel这个镜像引导小工具
 

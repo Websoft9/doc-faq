@@ -20,7 +20,7 @@ Websoft9的镜像默认安装了Let's Encrypt免费的证书部署软件，只�
    ```
 2. 根据提示输入对应的内容（下图为范例）
 
-   ![1542853767834](http://libs.websoft9.com/Websoft9/DocsPicture/zh/lamp/certbot-websoft9.png)
+   ![1542853767834](https://libs.websoft9.com/Websoft9/DocsPicture/zh/lamp/certbot-websoft9.png)
 
    > 第4步可以多选,输入的数字以逗号/空格为分隔
 

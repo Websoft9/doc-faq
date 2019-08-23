@@ -9,7 +9,7 @@
 ## 开具发票
 
 开具发票（或账单）请登录到云平台索取，请阅读[云平台文档](/zh/tech-instance.md)  
-如果由于特殊原因不方便通过云平台操作，请通过Websoft9官网[在线提交发票](http://www.websoft9.com/apply-invoice)
+如果由于特殊原因不方便通过云平台操作，请通过Websoft9官网[在线提交发票](https://www.websoft9.com/apply-invoice)
 
 发票注意事项：
 

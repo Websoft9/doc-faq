@@ -85,7 +85,7 @@ To configure your application to send email through SendGrid’s SMTP service, u
 - SMTP username: email address
 - SMTP password: The password is not a mailbox password, but an authorization code that needs to be applied on the SMTP Service page
 
-> The above is for quick reference only. see the [official SMTP for details](http://help.163.com/09/1223/14/5R7P6CJ600753VB8.html?servCode=6010376)
+> The above is for quick reference only. see the [official SMTP for details](https://help.163.com/09/1223/14/5R7P6CJ600753VB8.html?servCode=6010376)
 
 
 <a name="43ff8f5e"></a>

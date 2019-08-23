@@ -37,8 +37,8 @@
 下面以LAMP为例，就具体的备份操作进行说明：
 
 1. 通过WinSCP将网站目录完整的下载到本地（如果文件数量比较多，建议压缩后再下载） 
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-download-websoft9.png)
-2. 通过PHPMyAdmin登录数据库，在左侧菜单中选择所需的数据库，顶部导航栏上选择“导出”标签    ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
+   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-download-websoft9.png)
+2. 通过PHPMyAdmin登录数据库，在左侧菜单中选择所需的数据库，顶部导航栏上选择“导出”标签    ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
 4. 选择导出方式和格式（建议SQL），点击“执行”，导出文件后下载到本地
 5. 将程序文件和数据库文件放到同一个文件夹，根据日期命名，备份工作完成
 
