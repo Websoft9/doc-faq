@@ -92,3 +92,10 @@ Websoft9的镜像默认安装了Let's Encrypt免费的证书部署软件，只�
 #### HTTP自动跳转到HTTPS页面
 
 建议在网站根目录下的.htacesss文件中增加redirect规则
+
+#### 运行 Certbot 报错？
+
+运行如下命令进行修正
+```
+pip install requests==2.6.0 urllib3 --upgrade --force-reinstall
+```
