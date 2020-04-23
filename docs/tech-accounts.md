@@ -10,12 +10,12 @@
 
 | 名称                    | 用户名     | 密码           | 可视化管理地址           |
 | ----------------------- | ---------- | -------------- | ------------------------ |
-| MySQL/Mariadb PHP环境中 | root       | 123456 或 存储在服务器中 | http://公网IP/phpmyadmin |
-| MySQL/Mariadb 其他      | root       | 123456 或 存储在服务器中 | http://公网IP:9090       |
-| PostgreSQL              | postgres   | 123456 或 存储在服务器中 | http://公网IP:9090       |
-| Mongodb                 | adminmongo | 123456 或 存储在服务器中 | http://公网IP:9091       |
-| Oracle                  | system     | 123456 或 存储在服务器中 | 暂无                     |
-| SQLServer               | sa         | websoft9! 或 存储在服务器中 | 使用客户端管理           |
+| MySQL/Mariadb PHP环境中 | root       | 存储在服务器中 | http://公网IP/phpmyadmin |
+| MySQL/Mariadb 其他      | root       | 存储在服务器中 | http://公网IP:9090       |
+| PostgreSQL              | postgres   | 存储在服务器中 | http://公网IP:9090       |
+| Mongodb                 | adminmongo | 存储在服务器中 | http://公网IP:9091       |
+| Oracle                  | system     | 存储在服务器中 | 暂无                     |
+| SQLServer               | sa         | 存储在服务器中 | 使用客户端管理           |
 
 ### 获取数据库密码
 
@@ -30,7 +30,6 @@
 对于Windows系统来说，数据库密码存储在您的服务器指定文件中：*`c:/credentials/password.txt`*
 
 服务器的桌面上会有打开数据库密码文件的快捷方式
-
 
 
 ## 操作系统

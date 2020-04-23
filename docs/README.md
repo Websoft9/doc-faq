@@ -26,8 +26,6 @@ footer: MIT Licensed | Copyright © 2019 Websoft9
 数据库的账号密码存储在您的服务器指定文件中：`/credentials/password.txt`  。建议通过云控制台直接连接服务器，进入命令终端，运行 cat 命令获取数据库密码： 运行`cat`命令
 ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
 
-如果你的服务器上没有此文件，数据密码是：`123456`
-
 ## 我要人工服务
 
 如果你在云平台订阅了我们镜像，并为之付费，您可以享受人工服务，马上[联系人工](https://support.websoft9.com/zh/contact.html)
@@ -91,6 +89,10 @@ Websoft9提供的所有镜像，都默认开启了对SSL/HTTPS的支持，无需
 ## 源码存放在哪里？
 
 大部分镜像的源码都存放在：`/data/wwwroot`
+
+## 如何启用操作系统的 root 账号？
+
+部分云厂商默认关闭了 root 账号，使得用户的操作及其不方便。开启参考：[AWS](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号)，[Azure](https://support.websoft9.com/docs/azure/zh/server-login.html#示例2：启用系统root账号)
 
 
 ## 数据库无法远程连接
