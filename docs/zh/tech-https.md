@@ -92,3 +92,7 @@ Websoft9的镜像默认安装了Let's Encrypt免费的证书部署软件，只�
 #### HTTP自动跳转到HTTPS页面
 
 建议在网站根目录下的.htacesss文件中增加redirect规则
+
+#### Android 无法使用HTTPS，而IOS可以？
+
+确保SSLCertificateChainFile已设置对应的证书文件
