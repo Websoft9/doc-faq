@@ -68,9 +68,6 @@ Websoft9的镜像默认安装了Let's Encrypt免费的证书部署软件，只�
     systemctl restart httpd
     ```
 
-
-
-
 ---
 
 ## 证书FAQ
@@ -92,6 +89,25 @@ Websoft9的镜像默认安装了Let's Encrypt免费的证书部署软件，只�
 #### HTTP自动跳转到HTTPS页面
 
 建议在网站根目录下的.htacesss文件中增加redirect规则
+
+```
+# 全部跳转
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R,L]
+
+# 指定域名跳转
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^yourdomain\.com [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R,L]
+
+# 指定某个目录跳转
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{REQUEST_URI} folder
+RewriteRule ^(.*)$ https://www.yourdomain.com/folder/$1 [R,L]
+```
 
 #### Android 无法使用HTTPS，而IOS可以？
 
