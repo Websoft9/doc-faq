@@ -20,7 +20,7 @@
 > The above is for quick reference only. see the [QQ邮箱SMTP设置](https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=166)
 
 
-### 163邮箱
+### 163邮箱（网易）
 
 - SMTP host: smtp.163.com
 - SMTP port: 465 or 994 for SSL-encrypted email
@@ -36,8 +36,8 @@
 
 - SMTP host: smtp.mxhichina.com
 - SMTP port: 465  for SSL-encrypted email
-- SMTP Authentication: must be checked
-- SMTP Encryption: must SSL
+- SMTP 身份认证: 必须勾选
+- SMTP 加密: 需启用SSL
 - SMTP username: email address
 - SMTP password: email password
 

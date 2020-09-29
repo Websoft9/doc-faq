@@ -28,5 +28,14 @@ module.exports = [
       ['https://support.websoft9.com/docs/legal','Legal'],
     ]
   },
+
+  {
+    title: 'Other',
+    collapsable: false,
+    children: [
+      '/other-glossary',
+      '/other-notices',
+    ]
+  },
   
   ]

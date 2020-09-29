@@ -29,5 +29,14 @@ module.exports = [
       ['https://support.websoft9.com/docs/legal/zh','法律'],
     ]
   },
+
+  {
+    title: '其他',
+    collapsable: false,
+    children: [
+      '/zh/other-glossary',
+      '/zh/other-notices',
+    ]
+  },
   
   ]
