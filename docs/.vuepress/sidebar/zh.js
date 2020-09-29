@@ -21,6 +21,7 @@ module.exports = [
     title: '商务',
     collapsable: false,
     children: [
+      '/zh/bz-faq',
       '/zh/bz-product',
       '/zh/bz-buy',
       '/zh/bz-order',

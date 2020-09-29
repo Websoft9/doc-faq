@@ -15,9 +15,18 @@
 
 请联系云平台官方修复
 
-#### http://公网IP 无法打开软件的初始化界面？
+#### *http://服务器公网IP* 无法打开软件的初始化界面？
 
-检查是否安装了所需的软件，请保证[服务器安全组](/zh/tech-instance.md)的80端口是开启的
+最常见的原因如下：
+
+* 服务器[安全组**80** 端口](/zh/tech-instance.md)没有开启
+* 你所安装的镜像不支持此类访问
+* 安装的不是目标镜像
+* 你的服务器网络故障
+* 产品本身的故障导致
+* 其他
+
+不管哪种原因，一旦无法访问，请第一时刻联系我们[人工支持](https://support.websoft9.com/zh/contact.html)
 
 #### 已经替换了默认目录的文件，仍然指向Websoft9演示页面？
 
@@ -29,8 +38,8 @@
 
 #### phpMyAdmin 出现 Error during session...错误？
 
-错误原因：PHP 的 session.save_path 路径目录的权限设置不正确。
-解决方案：打开WinSCP，运行如下命令即可
+错误原因：PHP 的 session.save_path 路径目录的权限设置不正确。  
+解决方案：打开WinSCP，运行如下命令即可  
 ~~~
 chown -R root:nginx /var/lib/php/session
 echo 'chown nginx. -R /var/lib/php' >> /etc/cron.daily/0yum-daily.cron
@@ -46,7 +55,7 @@ Nginx应用服务器出现502错误的原因很多，但是基本都是资源不
 
 #### 网站速度很慢？
 
-带宽不足以及服务器满负荷运转是最常见的原因
+带宽不足以及服务器满负荷运转是最常见的原因，详细分析参考[此处](/zh/#网站访问很慢？)。
 
 #### 连接SFTP，出现Disconnected...publickey
 
@@ -69,5 +78,10 @@ Nginx应用服务器出现502错误的原因很多，但是基本都是资源不
 503 服务器暂时不可用
 ```
 您也可以访问 [W3C 页面](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 获取更多HTTP 状态码信息的完整列表。
+
+
+#### 升级或安装扩展时网络超时？
+
+参考[此处](/zh/#升级或安装扩展时网络超时？)
 
 

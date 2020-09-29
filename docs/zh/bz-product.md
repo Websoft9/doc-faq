@@ -1,12 +1,12 @@
 # 产品
 
-Websoft9公司在主流的云平台上提供不少开源软件产品，交付模式都是以虚拟机镜像的形式存在。
+Websoft9 公司在主流的云平台上提供不少开源软件产品，交付模式都是以虚拟机镜像的形式存在。
 
 既然这些开源软件不是Websoft9公司生产的，那么Websoft9公司有什么价值呢？做了哪些工作呢？
 
 ## 价值
 
-以LAMP环境为例，部署到您的服务器的是下图的架构：
+以 LAMP 环境为例，部署到您的服务器的是下图的架构：
 
 ![img](https://libs.websoft9.com/Websoft9/DocsPicture/zh/wamp/php-infra-websoft9.png)
 
