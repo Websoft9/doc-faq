@@ -171,7 +171,7 @@ sudo certbot
 
 ## 如何配置邮件发送（SMTP）？
 
-本文章针对**发送邮件**提供了[专门的章节 SMTP](http://localhost:8080/docs/faq/zh/tech-smtp.html)进行了详细的描述。
+本文章针对**发送邮件**提供了[专门的章节 SMTP](/zh/tech-smtp.html)进行了详细的描述。
 
 ## 如何配置安全组？
 

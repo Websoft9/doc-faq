@@ -6,180 +6,181 @@ actionLink: /alldocs.md
 footer: MIT Licensed | Copyright © 2019 Websoft9
 ---
 
-# 热门问题
+# Most Common Problems
 
-下面列出的问题主要偏重于**技术问题**，如果您需要了解的是**非技术问题**，请参考[此处](/zh/bz-faq.md)。
+Problems listed below are mainly **technical problems**. For **non-technical problems**, please refer to [this section](/bz-faq.md).
 
-## 产品有帮助文档吗？
+## Is there a Guide for the product?
 
-我们为每一个镜像产品都提供了在线文档，请查看[所有文档](https://support.websoft9.com/zh/alldocs.html)
+Yes, we offer online documentations for each image. See [All Docs](https://support.websoft9.com/alldocs.html) for reference.
 
-## 服务器账号密码是什么？
+## What's the username and password for Cloud Server?
 
 **Linux**
 
-* 主机地址：服务公网IP地址
-* 连接方式：云控制台在线SSH 或 SFTP客户端工具 或 SSH客户端工具
-* 管理员密码：创建服务器的时候自行设置，若不记得密码需要通过**云控制台**重置。
-* 管理员账号：不同的云平台有一定的差异
-   |  云平台   |  管理员账号   | 其他|
+* Host Name: Internet IP or Public IP of your Instance
+* Connect by: Online SSH on Cloud Console or SFTP/SSH client tools 
+* Password: It was set by yourself when created an instance. If you forget the password of Linux, reset it on **Cloud Console**.
+* Username: Different Cloud Platform has differences.
+   |  Cloud Platform   |  Administrator Username   | Other |
    | --- | --- | --- |
-   |  Azure   |  创建服务器的时候自行设置   | [如何开启root账户？](https://support.websoft9.com/docs/azure/zh/server-login.html#示例2：启用系统root账号) |
-   |  AWS Centos 系统   |  centos   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
-   |  AWS AmazonLinux 系统   | ec2-user   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号) |
-   |  AWS Ubuntu 系统  |  ubuntu   | [如何开启root账户？](https://support.websoft9.com/docs/aws/zh/server-login.html#示例2：启用系统root账号)  |
-   |  阿里云，华为云，腾讯云   |  root   | |
+   |  Azure   |  It was set by yourself when created VM.   | [How to enable root access?](https://support.websoft9.com/docs/azure/server-login.html#sample2-enable-the-root-username) |
+   |  AWS CentOS   |  centos   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
+   |  AWS AmaonLinux   |  ec2-user   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
+   |  AWS Ubuntu   |  ubuntu   | [How to enable root access?](https://support.websoft9.com/docs/aws/server-login.html#sample2-enable-the-root-username) |
+   |  Alibaba Cloud, HUAWEI CLOUD, Tencent Cloud |  root   |
+
 
 **Windows**
 
-* 主机地址：服务公网IP地址
-* 连接方式：云控制台在线管理 或 远程桌面工具
-* 管理员密码：创建服务器的时候自行设置，若不记得密码需要通过**云控制台**重置。
-* 管理员账号：不同的云平台有一定的差异
-   |  云平台   |  管理员账号   |
+* Host Name: Internet IP or Public IP of your Instance
+* Connect by: Remote Desktop Protocol or Online Management on Cloud Console 
+* Password: It was set by yourself when created an instance. If you forget the password of Linux, reset it on **Cloud Console**.
+* Username: Different Cloud Platform has differences.
+   |  Cloud Platform   |  Administrator Username  |
    | --- | --- |
-   |  Azure   |  创建服务器的时候自行设置   |
-   |  AWS，阿里云，华为云，腾讯云   |  administrator   |
+   |  Azure   |  It was set by yourself when created VM   |
+   |  AWS, Alibaba Cloud, HUAWEI CLOUD, Tencent Cloud   |  administrator   |
 
-## 怎么连接/登录云服务器？
+## How to connect/login to Cloud Server?
 
-请查阅：本文档的[《云服务器操作》](/zh/tech-instance.md)章节
+Refer to this section: [*Instance*](/tech-instance.md).
 
-## 服务器连不上？
+## Can't connect to the server?
 
-服务器连不上有两个最常见的原因：
+There are two common reasons for this problem:
 
-* 安全组端口没有开启（Windows服务器对应的端口是：3389，Linux对应的端口是：22）
-* 服务器无法连接互联网
+* Your port of Security Group Rules is not allowed.(Port for Windows server: TCP:3389; port for Linux server: TCP:22)
+* The server failed to connect to Internet.
 
-如果无法自行解决问题，请联系云厂商的客服
+If can't solve the problem on your own, please contact the Customer Service of Cloud Platforms.
 
-## 如何通过 FTP 上传文件？
+## How to upload files by FTP?
 
-系统中本身默认没有安装FTP，但你可以通过**更简单**的方式管理文件：
+FTP is not installed in the system by default, but you can manage files in an **easier** way:
 
-* Windows服务器：直接[远程桌面](/zh/tech-instance.md#连接-windows)登录后，通过拷贝和粘贴的方式管理文件
-* Linux服务器：请使用 [SFTP 连接服务器](/zh/tech-instance.html#连接-linux)后，通过可视化界面管理文件
+* Windows server: Connect by [Remote Desktop](/tech-instance.md#Connect-windows), then copy and paste files.
+* Linux Server: Connect by [SFTP](/tech-instance.html#Connect-linux) and manage files by visualization interface.
 
-以上两种方式的具体使用请参考：本文档的[《云服务器操作》](/zh/tech-instance.md)
+For details of the above methods, please refer to this section: [*Instance*](/tech-instance.md)
 
-## 如何初始化安装？
+## How to start initial installation?
 
-当镜像部署到您的服务器后，一般需要完成一个`初始化安装`操作，方可使用。
+After deploy the image to your server, you're required to complete the `initial installation` to begin your follow-up actions.
 
-一般情况下，进入初始化界面有两种入口：
+Generally, there are two entries to start initial installation:
 
-* http://服务器公网IP
-* http://服务器公网IP/9panel
+* http://Cloud server Internet IP
+* http://Cloud server Internet IP/9panel
 
-如果尝试了两个入口，均无法进入初始化界面，请检查**服务器安全组 80 端口**是开启状态
+If you failed to enter initial interface by both two entries, please check if **TCP:80 of Security Group Rules** of your server is allowed. 
 
-> 部分镜像的初始化不是通过浏览器访问，而需要登录到服务器中修改配置才能完成
+> Notice: For some image, you have to login to your server to initialize by modifying configuration.
 
-## 访问 *http://服务器公网IP* 失败？
+## Can't access *http://Cloud server Internet IP?
 
-最常见的原因如下：
+Possible causes are as follows:
 
-* 服务器安全组**80** 端口没有开启
-* 你所安装的镜像不支持此类访问
-* 安装的不是目标镜像
-* 你的服务器网络故障
-* 产品本身的故障导致
-* 其他
+* **TCP:80** of Security Group Rules of your server is not allowed.
+* The image you installed doesn't support this type of access.
+* The image you installed is not the target one.
+* There may be Internet failure of your server.
+* There may be some problems of the image.
+* Others.
 
-不管哪种原因，一旦无法访问，请第一时刻联系我们[人工支持](https://support.websoft9.com/zh/contact.html)
+No matter what the cause is, please contact us for [support](https://support.websoft9.com/contact.html) at once if you can't access.
 
-## 数据库密码是什么？
+## What's the password for database?
 
-数据库的账号密码存储在您的服务器指定文件中：`/credentials/password.txt`  。
+Password for database is stored in a particular file of your server:`/credentials/password.txt`  。
 
-需[连接服务器](zh/tech-instance.md#连接-linux)，运行 `sudo cat /credentials/password.txt` 命令获取数据库密码。  
+To have the password, [connect to your server](/tech-instance.md#Connect-linux) and run this command:`sudo cat /credentials/password.txt`  
 
-![获取数据库密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
+![password](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/catdbpassword-websoft9.png)
 
-当然，也可以使用 **[WinSCP](https://winscp.net/)** 等 SFTP 工具，直接打开密码存储文件，查看密码。
+Besides, you can use **[WinSCP](https://winscp.net/)** and other SFTP tool to open the file in which password is stored and get it.
 
-![获取数据库密码](https://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-checkpasswordfile-websoft9.png)
+![password](https://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-checkpasswordfile-websoft9.png)
 
-## 数据库如何管理？
+## How to manage the database？
 
-我们提供的部署方案中，支持如下的三种管理数据库有三种方式：
+Using the deployment solutions we provided, there are three ways for you to manage database:
 
-1. 登录服务器使用命令行
-2. 使用 dbForge, Navicat 等本地客户端工具
-3. 使用浏览器版的可视化管理工具（推荐）
+1. Login to the server and run command line.
+2. Use dbForge, Navicat and other local client tools.
+3. Use browser version of GUI management tools. (recommended)
 
-浏览器版的可视化管理工具包括：phpMyAdmin, phpPgAdmin, adminMongo等。  
+Browser version of GUI management tools include: phpMyAdmin, phpPgAdmin, adminMongo and more.  
 
-它们的入口地址如下：
+Entry address:
 
-* phpMyAdmin for MySQL: *http://服务器公网IP:9090*
-* phpPgAdmin for PostgreSQL: *http://服务器公网IP:9090*
-* adminMongo for MongoDB: *http://服务器公网IP:9091*
+* phpMyAdmin for MySQL: *http://Cloud Server Internet IP:9090*
+* phpPgAdmin for PostgreSQL: *http://Cloud Server Internet IP:9090*
+* adminMongo for MongoDB: *http://Cloud Server Internet IP:9091*
 
-> 以上仅提供通常的入口地址，更为精准的地址仍然需要以应用的文档为准。
+> Those are the common entry address, to get the precise address in the applied document.
 
-## 数据库客户端无法远程连接数据库？
+## Database clients can't have remote connection to database?
 
-从安全的角度考量，默认情况下数据库关闭了其远程连接。如果您需要通过本地客户端远程访问数据库，最少需要具备三个条件：
+For safety, remote connection of database is closed by default. If you need remote connection to database by local clients, at least three conditions are required:
 
-* 数据库服务器的设置中，已经完成了**可以被远程访问**的设置
-* 服务器安全组开启了数据库的远程访问端口（例如：MySQL需要开启3306端口）
-* 本地客户端-数据库服务器的网络是畅通的
+* For settings of database server, **remote connection is allowed**.
+* Port for remote connection to database of Security Group Rules of your server is allowed. (Eg: Port 3306 is needed for MySQL)
+* Network from local clients to database server runs smoothly.
 
-具体参考我们的操作文档：
+Refer to our manipulates documents for details:
 
-* [MySQL 设置远程访问](http://support.websoft9.com/docs/mysql/zh/solution-remote.html)
-* [PostgreSQL 设置远程访问](http://support.websoft9.com/docs/postgresql/zh/solution-more.html#设置远程访问)
-* [MongoDB 设置远程访问](http://support.websoft9.com/docs/mongodb/zh/solution-more.html#设置远程访问)
+* [MySQL Remote Connection](http://support.websoft9.com/docs/mysql/solution-remote.html)
+* [PostgreSQL Remote Connection](http://support.websoft9.com/docs/postgresql/solution-more.html#)
+* [MongoDB Remote Connection](http://support.websoft9.com/docs/mongodb/solution-more.html#)
 
-## 如何配置域名？
+## How to configure the domain?
 
-给网站配上域名访问有两个步骤：
+There are two steps for domain configuration:
 
-1. 域名解析：域名解析需要通过域名控制台操作
-2. 域名绑定：域名绑定需要连接到云服务器，修改云服务器上**虚拟主机配置文件**中的域名项：
+1. Domain name resolution: Operate on domain console.
+2. Domain binding: Connect to cloud server and modify the domain item of **vhost configuration file** on cloud server.
 
-虚拟主机配置文件在哪里呢？ 要根据所使用的 HTTP 服务器而定，一般说来：
+Where is the vhost configuration file? It depends on the HTTP server. Generally speaking, there are as follows:
 
-* Apache 的虚拟主机配置文件地址：*/etc/httpd/conf.d/vhost.conf*
-* Nginx 的虚拟主机配置文件地址：*/etc/nginx/conf.d/default.conf*
+* Apache vhost configuration file: */etc/httpd/conf.d/vhost.conf*
+* Nginx vhost configuration file: */etc/nginx/conf.d/default.conf*
 
-## 如何备份？
+## How to back up?
 
-备份是使用云服务器必备的工作，如果您还没有重视备份或不知道如何备份，请参考本文档的[备份](/zh/tech-backup.md)章节。
+Back up is necessary when using cloud server. If you don't aware the importance of backup or you have no idea about how to back up, please refer to this section: [Backup](//tech-backup.md)
 
-## 如何更换（或重置）镜像？
+## How to change or redeploy image?
 
-更换镜像即重装系统，适用于镜像退订，产品更换等场景。  
+Changing image means reinstalling the system. It happens when users cancel subscription or change the product and more.
 
-重置镜像即恢复最初安装镜像的状态，适用于测试等场景。  
+Image redeployment is to restore the image to its original state. It happens when conduct test.
 
-阿里云、华为云和腾讯云等国内云平台支持对已有的服务器进行更换镜像的操作，而 Azure 和 AWS 不支持这种操作。  
+Alibaba Cloud, Tencent Cloud and HUAWEI CLOUD support to change image based on the existing server, while Azure and AWS don't support this operation.
 
-如果您需要更换（或重置）镜像，请参考：本文档的[《云服务器操作》](/zh/tech-instance.md)  
+If you need to change or redeploy image, please refer to this section:[Instance](/tech-instance.md)  
 
-## 如何设置 HTTPS 访问？
+## How to set HTTPS?
 
-我们针对所有产品预设对 SSL/HTTPS 的支持，用户仅需要运行如下命令，即可开始使用：
+We provide default support to SSL/https for all products. To use HTTPS,users only need to run the following commands:
 
 ```
 sudo certbot
 ```
 
-配置 HTTP 过程中，仍然有一些不可预料的问题，详情参考本文档的 [HTTPS](/zh/tech-https.md) 章节
+On the process of HTTP configuration, some unexpected problems may occur. To solve problem, please refer to this section: [HTTPS](/tech-https.md).
 
-## 如何配置邮件发送（SMTP）？
+## How to configure SMTP?
 
-本文章针对**发送邮件**提供了[专门的章节 SMTP](http://localhost:8080/docs/faq/zh/tech-smtp.html)进行了详细的描述。
+There is a particular section about **SMTP** configuration for your reference: [SMTP](/tech-smtp.html).
 
-## 如何配置安全组？
+## How to configure Security Group?
 
-使用云服务器，无需关注服务器自身的防火墙，只需在云控制台做好**安全组配置**即可控制网络访问。
+Using Cloud Server, users can control access by **Security Group Configuration** on the console without paying attention to the firewall of CLoud Server.
 
-安全组配置最常见的操作就是开启某一个端口，比如：TCP:80。
+The most common operation of Security Group configuration is to enable one port, such as: TCP:80.
 
-不同的云平台的安全组操作方式略有差异，设置参考：[云平台指南](/zh/tech-instance.md)
+Different Cloud Platforms have different operations. To set Security Group, refer to [Instance](/tech-instance.md).
 
 ## 应用源码存放在哪里？
 
