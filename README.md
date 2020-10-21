@@ -1,2 +1,3 @@
-# faq
-使用Websoft9部署包过程中最常见的问题，包括云服务使用、账号密码等
+# FAQ
+
+The most common guide for user, including cloud service use, account password, etc.
