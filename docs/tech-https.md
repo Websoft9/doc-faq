@@ -1,131 +1,137 @@
 # SSL/HTTPS
 
-配置HTTPS访问的前置条件：
+It is easy to configure HTTPS for Websoft9's deployment solution.
 
-* 开启服务器安全组的443端口
-* 网站通过HTTP可正常访问
-* Web服务器已经安装SSL模块（Websoft9提供的所有镜像默认已经安装）
+## Prepare 
 
-具体以上条件后，便可以登录服务器配置HTTPS。此处提供两种方案，请根据实际情况选择：
+Before you configure HTTPS, make sure that:
 
+* Enable TCP:443 port of your Cloud Console
+* Your application can accessed by HTTP
+* SSL module of HTTP Server is installed (have installed by default for Websoft9)
 
-## 方案一：自动免费证书配置
+## Configure
 
-Websoft9的镜像默认安装了 [Let's Encrypt](https://letsencrypt.org/) 免费的证书部署软件，只需一条命令就可以启动证书部署.
+After the above conditions are specified, you can log in to the server to configure HTTPS. Two solutions are provided here, please choose according to the actual situation:
+
+### Automatic deployment
+
+Just run the one command `sudo certbot` on your instance to start the HTTPS deployment.
+
+```
+sudo certbot
+```
+This solution is based on [Let's Encrypt](https://letsencrypt.org/), and certifications stored in the file: `/etc/letsencrypt/live/`.
 
 ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/certbot-ui-websoft9.png)
 
-自动部署证书会根据已有的HTTP配置而定，故请确保网站的配置文件中ServerName和ServerAlias中配置有正确的解析后的域名
+### Manual deployment
 
-1. 连接服务器，运行命令 
-   ```
-   sudo certbot
-   ```
-2. 根据提示输入对应的内容（下图为范例）
+If you have applied for a commercial certificate, complete the HTTPS configuration in just three steps:
 
-   ![1542853767834](https://libs.websoft9.com/Websoft9/DocsPicture/zh/lamp/certbot-websoft9.png)
+1. Upload your certificate, file of the certificate chain and secret key to the directory: */data/cert*.
 
-   > 第4步可以多选,输入的数字以逗号/空格为分隔
+2. Open the **vhost configuration file** and insert **HTTPS template**
+   * For Nginx, the file is  */etc/nginx/conf.d/default.conf*, insert the **HTTPS template** into *server{  }* and modify your certificate path,.
+        ``` text
+        #-----HTTPS template start------------
+        listen 443 ssl; 
+        ssl_certificate /data/cert/xxx.crt;
+        ssl_certificate_key /data/cert/xxx.key;
+        ssl_trusted_certificate /data/cert/chain.pem;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+        #-----HTTPS template end------------
+        ```
+    * For Apache, the file is */etc/nginx/conf.d/default.conf*, insert the entire **HTTPS template** to it, then modify your certificate path, DocumentRoot.
 
-4.  以上步骤操作完成后,certbot将会自动配置好证书,浏览器访问域名检查是否配置成功。生成的网站证书存放目录：`/etc/letsencrypt/live/`
-
-## 方案二：自行上传证书配置
-
-下面以Apache为例，说明上传证书的配置方案：
-
-1.  将可用的证书上传到服务器证书目录：/data/cert（没有cert目录可以自己新建）
-2.  编辑虚拟主机配置文件`/etc/httpd/vhost/vhost.conf `，将下面的https配置文件模板拷贝到配置文件中
-
-    ```
-    <VirtualHost *:443>
-    ServerName  www.mydomain.com
-    DocumentRoot "/data/wwwroot/default"
-    #ErrorLog "logs/www.mydomain.com-error_log"
-    #CustomLog "logs/www.mydomain.com-access_log" common
-    <Directory "/data/wwwroot/default">
-    Options Indexes FollowSymlinks
-    AllowOverride All
-    Require all granted
-    </Directory>
-    SSLEngine on
-    SSLCertificateFile  /data/cert/www.mydomain.com.crt
-    SSLCertificateKeyFile  /data/cert/www.mydomain.com.key
-    SSLCertificateChainFile  /data/cert/www.mydomain.com_chain.crt
-    </VirtualHost>
-    ```
-
-4.  修改配置文件中相关项，并保存。
+        ```
+        #-----HTTPS template start------------
+        <VirtualHost *:443>
+        ServerName  www.mydomain.com
+        DocumentRoot "/data/wwwroot/default"
+        #ErrorLog "logs/www.mydomain.com-error_log"
+        #CustomLog "logs/www.mydomain.com-access_log" common
+        <Directory "/data/wwwroot/default">
+        Options Indexes FollowSymlinks
+        AllowOverride All
+        Require all granted
+        </Directory>
+        SSLEngine on
+        SSLCertificateFile  /data/cert/www.mydomain.com.crt
+        SSLCertificateKeyFile  /data/cert/www.mydomain.com.key
+        SSLCertificateChainFile  /data/cert/www.mydomain.com_chain.crt
+        </VirtualHost>
+        #-----HTTPS template end------------
+        ```
+4. All items explanation for you
      
-     ServerName  #主域名，务必修改  
-     ServerAlias   #副域名，可选项  
-     DocumentRoot #网站路径，务必填写网站实际路径，例如:/data/wwwroot/wordpress  
-     Directory #同上  
-     SSLCertificateFile #证书，务必填写网站实际路径和名称  
-     SSLCertificateKeyFile #证书私钥，务必填写网站实际路径和名称  
-     SSLCertificateChainFile #证书链（CA文件），务必填写网站实际路径和名称  
+   * ServerName: Primary Domain Name  
+   * ServerAlias: Second Domain Name, optional  
+   * DocumentRoot: Website root directory, must correct path, e.g. */data/wwwroot/wordpress*
+   * Directory: The same with DocumentRoot
+   * SSLCertificateFile: SSLCertificate file path
+   * SSLCertificateKeyFile: SSLCertificate key file path
+   * SSLCertificateChainFile: SSLCertificate key chain file path  
 
-     > 证书的后缀一般是：.crt或者 .pem，私钥的后缀是：.key，填写错误会导致服务无法启动
+    > `.crt` or `.pem` is the suffix name for SSLCertificate, `.key` is the suffix name for  SSLCertificate key. The incorrect match will cause certificate deployment failure
 
-5.  重启服务
-
-    ```
-    systemctl restart httpd
-    ```
+5. Save file and [restart Nginx or service](/admin-services.md)
+   ```
+   sudo systemctl restart nginx
+   sudo systemctl restart apache
+   ```
 
 ---
 
 ## FAQs for HTTPS
 
-#### 为什么设置成功，显示“与此网站建立的连接并非完全安全”？
+#### Why is the setting successful and it displays "The connection with this website is not completely secure"?
 
-首选明确一点即您的HTTPS设置是成功的，只是由于网站中存在包含 http访问的静态文件 或 外部链接等，导致浏览器告警您的网站并非完全安全。
+The first option is to make it clear that your HTTPS settings are successful, but because there are static files or external links that contain http access in the website, the browser warns that your website is not completely secure.
 
-#### 向云平台申请证书的注意事项
+#### How to configure HTTP when use CDN?
 
-*   免费证书只能用于单个域名,例如: buy.example.com,或next.buy.example.com,
-*   example.com是通配符域名方式，不能用于申请免费证书
-*   申请证书的时候，请先解析好域名，有些证书会绑定域名对应的IP地址，即一旦申请后，IP地址不能更换，否则证书不可用
+If you want to use CDN, there have two HTTPS configurations for you:
 
-#### CDN/全站加速开启HTTPS
+1. Enable HTTPS on your CDN
+2. Enable HTTPS on your Cloud Server
 
-需要根据云平台参考文档设置。一般来说，此场景下有两个地方需要设置 HTTPS：
+And make sure use the same Certification files on your Cloud Server and CDN.
 
-1. CDN/全站加速的控制台需设置 HTTPS
-2. 服务器中的应用需设置 HTTPS
+#### How to enable HTTP redirect to HTTPS?
 
-需要注意的是，两端 HTTPS 必须使用同一套证书。
-
-#### HTTP 自动跳转到 HTTPS 页面
-
-建议在网站根目录下的.htacesss文件中增加redirect规则
+For Apache, suggest your add the redirect rules in the file **.htacesss** of your application root directory
 
 ```
-# 全部跳转
+# All redirect
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R,L]
 
-# 指定域名跳转
+# Redirect for one Domain
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^yourdomain\.com [NC]
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://www.yourdomain.com/$1 [R,L]
 
-# 指定某个目录跳转
+# Redirect for on folder
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteCond %{REQUEST_URI} folder
 RewriteRule ^(.*)$ https://www.yourdomain.com/folder/$1 [R,L]
 ```
 
-#### Android 无法使用HTTPS，而IOS可以？
+#### Android cannot use HTTPS, but IOS can?
 
-确保SSLCertificateChainFile已设置对应的证书文件
+Ensure that **SSLCertificateChainFile** has set the corresponding certificate file
 
-#### IP 地址可以申请证书吗？
+#### Can an IP address apply for a certificate?
 
-不可以，且没有任何意义。
+No
 
-#### Docker 应用如何部署 HTTPS？
+#### How to deploy HTTPS for Docker applications?
 
-我们的方案中，不建议在容器内部设置 HTTPS，而是通过宿主机的 HTTP 服务器（Nginx/Apache等）在端口转发的模式下配置 HTTPS。
+In our solution, it is not recommended to set up HTTPS inside the container, but to configure HTTPS in port forwarding mode through the host's HTTP server (Nginx/Apache, etc.).

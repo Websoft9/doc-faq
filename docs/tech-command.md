@@ -1,52 +1,59 @@
-# 常用命令
+# Useful commands
 
-使用操作系统为Linux的镜像，可能需要用到的命令如下：
+These commands may be useful for you to manege application on Linux:
 
-## 系统
+## System
 
 ```
-# 重启服务器
+# Reboot Linux system
 reboot 
 
-# 查看内存使用
+# View memory usage
 free
 
-# 查看硬盘使用
+# View disk usage
 df -hl 
 
+# View Docker containers usage
+sudo docker ps -a
+
 ```
 
-## 文件管理
+## File management
 
 ```
-# 下载url对应的文件
+# Down load the file from URL
 wget url  
 
-# 解压xx.zip文件到当前目录
+# Uzip xx.zip to current directory
 unzip xx.zip
 
-# 进入指定目录
+# Go to target directory
 cd /data/wwwroot
 
-# 修改wwwroot文件夹所属的用户和用户组为nginx
+# Modify the owner and group for target directory
 chown -R nginx.nginx /data/wwwroot
 
-# 分别修改文件和文件夹的读、写、执行权限
+# Modify the read,write,execute permission for target directory
 find /data/wwwroot/default -type f -exec chmod 640 {} \;
 find /data/wwwroot/default -type d -exec chmod 750 {} \;
 ```
 
-## 运维命令
+## Service management
 
 ```
-# 重启Nginx服务，重启php-fpm
+# Restart Nginx
 systemctl restart nginx
+
+# Restart php-fpm
 systemctl restart php-fpm 
 
-# 重启Apache服务
+# Restart Apache HTTP
 systemctl restart apache
 
-# 系统升级
-yum update -y //升级所有包同时也升级软件和系统内核,-y当安装过程提示选择全部为"yes"
-yum upgrade -y //只升级所有包，不升级软件和系统内核,-y当安装过程提示选择全部为"yes"
+# Upgrade all software on System, not upgrade System core
+yum upgrade -y
+
+# Upgrade System core and all software on System
+yum update -y
 ```

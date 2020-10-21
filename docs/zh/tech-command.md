@@ -14,6 +14,9 @@ free
 # 查看硬盘使用
 df -hl 
 
+# 查看 Docker 容器
+sudo docker ps -a
+
 ```
 
 ## 文件管理

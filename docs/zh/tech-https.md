@@ -30,47 +30,63 @@ Websoft9的镜像默认安装了 [Let's Encrypt](https://letsencrypt.org/) 免�
 
 ## 方案二：自行上传证书配置
 
-下面以Apache为例，说明上传证书的配置方案：
+下面详细说明上传证书的配置方案：
 
-1.  将可用的证书上传到服务器证书目录：/data/cert（没有cert目录可以自己新建）
-2.  编辑虚拟主机配置文件`/etc/httpd/vhost/vhost.conf `，将下面的https配置文件模板拷贝到配置文件中
+1. 将可用的证书上传到服务器证书目录：/data/cert（没有cert目录可以自己新建）
 
-    ```
-    <VirtualHost *:443>
-    ServerName  www.mydomain.com
-    DocumentRoot "/data/wwwroot/default"
-    #ErrorLog "logs/www.mydomain.com-error_log"
-    #CustomLog "logs/www.mydomain.com-access_log" common
-    <Directory "/data/wwwroot/default">
-    Options Indexes FollowSymlinks
-    AllowOverride All
-    Require all granted
-    </Directory>
-    SSLEngine on
-    SSLCertificateFile  /data/cert/www.mydomain.com.crt
-    SSLCertificateKeyFile  /data/cert/www.mydomain.com.key
-    SSLCertificateChainFile  /data/cert/www.mydomain.com_chain.crt
-    </VirtualHost>
-    ```
+2. 打开**虚拟主机配置文件**，插入 HTTP 配置段
+   * 以 Nginx 为例，虚拟主机配置文件为 */etc/nginx/conf.d/default.conf*，插入下面的**HTTPS template** 到对应的*server{  }*段落中
+        ``` text
+        #-----HTTPS template start------------
+        listen 443 ssl; 
+        ssl_certificate /data/cert/xxx.crt;
+        ssl_certificate_key /data/cert/xxx.key;
+        ssl_trusted_certificate /data/cert/chain.pem;
+        ssl_session_timeout 5m;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+        #-----HTTPS template end------------
+        ```
+    * 以 Apache 为例，虚拟主机配置文件为 */etc/nginx/conf.d/default.conf*，插入下面的**HTTPS template** 到文件中
+
+        ```
+        #-----HTTPS template start------------
+        <VirtualHost *:443>
+        ServerName  www.mydomain.com
+        DocumentRoot "/data/wwwroot/default"
+        #ErrorLog "logs/www.mydomain.com-error_log"
+        #CustomLog "logs/www.mydomain.com-access_log" common
+        <Directory "/data/wwwroot/default">
+        Options Indexes FollowSymlinks
+        AllowOverride All
+        Require all granted
+        </Directory>
+        SSLEngine on
+        SSLCertificateFile  /data/cert/www.mydomain.com.crt
+        SSLCertificateKeyFile  /data/cert/www.mydomain.com.key
+        SSLCertificateChainFile  /data/cert/www.mydomain.com_chain.crt
+        </VirtualHost>
+        #-----HTTPS template end------------
+        ```
 
 4.  修改配置文件中相关项，并保存。
      
-     ServerName  #主域名，务必修改  
-     ServerAlias   #副域名，可选项  
-     DocumentRoot #网站路径，务必填写网站实际路径，例如:/data/wwwroot/wordpress  
-     Directory #同上  
-     SSLCertificateFile #证书，务必填写网站实际路径和名称  
-     SSLCertificateKeyFile #证书私钥，务必填写网站实际路径和名称  
-     SSLCertificateChainFile #证书链（CA文件），务必填写网站实际路径和名称  
+     * ServerName: 首选域名  
+     * ServerAlias: 可选域名  
+     * DocumentRoot: 应用目录，例如：*/data/wwwroot/wordpress*
+     * Directory：应用目录，同上  
+     * SSLCertificateFile：证书路径 
+     * SSLCertificateKeyFile：证书私钥路径
+     * SSLCertificateChainFile：证书链文件 
 
-     > 证书的后缀一般是：.crt或者 .pem，私钥的后缀是：.key，填写错误会导致服务无法启动
+     > 证书文件的后缀一般是 `.crt` 或者 `.pem`；私钥的后缀一般是：`.key`。错误的路径会导致服务无法启动。
 
 5.  重启服务
-
     ```
+    systemctl restart nginx
     systemctl restart httpd
     ```
-
 ---
 
 ## 证书FAQ

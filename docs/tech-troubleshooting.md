@@ -1,87 +1,62 @@
-# 故障速查
+# Troubleshooting
 
-下面列出最常见的故障或设置错误导致的问题。
+The most common faults or problems caused by incorrect settings are listed below.
 
-#### SFTP无法登录？
+#### SFTP login failed?
 
-检查账号和密码是正确，请保证[服务器安全组](/zh/tech-instance.md)的22端口是开启的
+Check you have used the correct username and password, and make sure **TCP:22** of [Security Group of Cloud console](/tech-instance.md) enabled
 
-#### Windows远程桌面连接失败？
+#### Windows remote connection failed?
 
-检查账号和密码是正确，请保证[服务器安全组](/zh/tech-instance.md)的3389端口是开启的，下图是排查方法  
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/aliyun/aliyun-guzhangpaichu.png)
+Check you have used the correct username and password, and make sure **TCP:3389** of [Security Group of Cloud console](/tech-instance.md) enabled
 
-#### 服务器无法重启？
+#### Cloud Server restart failed?
 
-请联系云平台官方修复
+You need to get support from Cloud Platform for this problem.
 
-#### *http://服务器公网IP* 无法打开软件的初始化界面？
+#### Access URL *http://Cloud Server Internet IP*?
 
-最常见的原因如下：
+The most common reasons includes:
 
-* 服务器[安全组**80** 端口](/zh/tech-instance.md)没有开启
-* 你所安装的镜像不支持此类访问
-* 安装的不是目标镜像
-* 你的服务器网络故障
-* 产品本身的故障导致
-* 其他
+* **TCP:3389** of [Security Group of Cloud console](/tech-instance.md) disabled
+* You application can't access by this URL
+* You have deploy an other image not you want
+* Your network of Cloud Server failure
+* Our image have failure, you can get support from our help desk to fix it
+* Other reasons
 
-不管哪种原因，一旦无法访问，请第一时刻联系我们[人工支持](https://support.websoft9.com/zh/contact.html)
+Regardless of the reason, once you cannot access, please contact us [Help desk](https://support.websoft9.com/contact.html)
 
-#### 已经替换了默认目录的文件，仍然指向Websoft9演示页面？
+#### Always display Websoft9 demo page when replaced the default files in example directory?
 
-请清空浏览器缓存 或 换一个浏览器测试
+Please clear your browser cache or test with another browser
 
-#### 域名解析迟迟没有生效？
+#### Does the domain name resolution take effect?
 
-解析生效之后，本地访问可能由于缓存问题导致仍然没有生效，请清空浏览器缓存和DNS缓存
+After the resolution takes effect, local access may still not take effect due to caching issues. Please clear the browser cache and DNS cache
 
-#### phpMyAdmin 出现 Error during session...错误？
+#### 502 error for Nginx?
 
-错误原因：PHP 的 session.save_path 路径目录的权限设置不正确。  
-解决方案：打开WinSCP，运行如下命令即可  
-~~~
-chown -R root:nginx /var/lib/php/session
-echo 'chown nginx. -R /var/lib/php' >> /etc/cron.daily/0yum-daily.cron
-~~~
+There are many reasons for the 502 error in the Nginx application server, but they are basically caused by insufficient resources. Including: insufficient memory, excessive CPU, hard disk full, and there may be programs that cause php-fpm to stop running. The corresponding solution:
 
-#### Nginx出现502错误
+* The memory and CPU exceed the standard. It can be solved temporarily by restarting the three services of php-fpm and nginx mysql. If it is a 1 core 1g configuration and 502 errors often occur, it is recommended to upgrade
+* If the hard disk is full, MySQL will stop service, and hard disk expansion is required
+* If the php-fpm service is stopped or an error is reported, 502 will appear, and php-fpm needs to be restarted
 
-Nginx应用服务器出现502错误的原因很多，但是基本都是资源不够造成的。 包括：内存不足，CPU超标，硬盘满了，另外可能也有程序导致php-fpm停止运行。对应的的解决办法：
+#### The website is slow?
 
-*   内存和CPU超标，通过重启一下php-fpm 和nginx mysql 三个服务可以临时解决，如果是1核1g的配置且经常出现502错误的话，建议升级
-*   硬盘满了的话，会导致MySQL停止服务，需要进行硬盘扩容
-*   php-fpm服务停止或者报错也会出现502，需要重启php-fpm
+Insufficient bandwidth and full server capacity are the most common reasons
 
-#### 网站速度很慢？
+#### What are the HTTP fault codes?
 
-带宽不足以及服务器满负荷运转是最常见的原因，详细分析参考[此处](/zh/#网站访问很慢？)。
-
-#### 连接SFTP，出现Disconnected...publickey
-
-错误原因：选用的是密钥对作为（与root账号密码有区别）登录凭证，而密钥对如果每日有下载到本地是无法在WinSCP等工具中直接使用的
-
-解决方案：设置WinSCP为秘钥对登录 或 云控制台更改登录凭证方式
-
-#### HTTP故障代码有哪些？
-
-如果某项请求发送到您的服务器要求显示您网站上的某个网页（例如用户通过浏览器访问您的网页或 Googlebot 抓取网页时），WEB服务器将会返回 HTTP 状态码响应请求。
-此状态代码提供关于请求状态的信息， 告诉 Googlebot 关于您的网站和请求的网页的信息。
-一些常见的状态代码:
 ```
-200 服务器成功返回内容
-301/2 永久/临时重定向
-304 未修改 Not Modified
-307 重定向中保留原始数据
-404 请求的页面不存在
-500 服务器内部错误
-503 服务器暂时不可用
+200 The server successfully returned content
+301/2 permanent/temporary redirect
+304 Not Modified
+307 Keep original data in redirect
+404 The requested page does not exist
+500 server internal error
+503 The server is temporarily unavailable
 ```
-您也可以访问 [W3C 页面](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) 获取更多HTTP 状态码信息的完整列表。
-
-
-#### 升级或安装扩展时网络超时？
-
-参考[此处](/zh/#升级或安装扩展时网络超时？)
-
+Access the URL [W3C](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) for more details.
 

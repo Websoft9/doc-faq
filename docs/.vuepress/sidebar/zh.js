@@ -25,7 +25,7 @@ module.exports = [
       '/zh/bz-product',
       '/zh/bz-buy',
       '/zh/bz-order',
-      ['https://support.websoft9.com/zh/terms.html','支持'],
+      ['https://support.websoft9.com/contact.html','支持'],
       ['https://support.websoft9.com/docs/legal/zh','法律'],
     ]
   },

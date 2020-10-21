@@ -1,51 +1,52 @@
-# 产品
+# Product
 
-Websoft9 公司在主流的云平台上提供不少开源软件产品，交付模式都是以虚拟机镜像的形式存在。
+Websoft9 have publish product/offer on Marketplace of major Cloud Platform, and the product model is image for Cloud Server.
 
-既然这些开源软件不是Websoft9公司生产的，那么Websoft9公司有什么价值呢？做了哪些工作呢？
+Why use the Cloud Native image powered by Websoft9?
 
-## 价值
+## Value
 
-以 LAMP 环境为例，部署到您的服务器的是下图的架构：
+Take LAMP, you can see the structure of it:
 
-![img](https://libs.websoft9.com/Websoft9/DocsPicture/zh/wamp/php-infra-websoft9.png)
+![websoft9 lamp runtime](https://libs.websoft9.com/Websoft9/DocsPicture/en/lamp/lamp-imagestacks-websoft9.png)
 
-LAMP环境的价值是让用户安装、发布和管理PHP网站变得更简单、更稳定，为了满足用户的需求，我们就会将PHP应用所需的基础组件：PHP语言，数据库，Web服务器等进行组合优化，提前安装ssl,smtp等扩展，实际上安装步骤达到100多个。为了用户有可视化的体验，我们又开发了9Panel这个镜像引导小工具
+The value of the LAMP runtime is to make it easier and more stable for users to install, publish and manage PHP websites. In order to meet the needs of users, we will combine the basic components required for PHP applications: PHP language, database, Web server, etc. Optimization, install ssl, smtp and other extensions in advance, in fact, there are more than 100 installation steps. In order to have a visual experience for users, we have developed 9Panel, a use guide web pages.
 
-另外，作为软件产品，文档和技术支持必不可少。
+Then, for a business software, the documentation and technology support is very important.
 
-> 总结：Websoft9是提供的镜像是一款软件产品，其目标是通过对开源软件、开源组件进行组合优化后，简化用户对软件部署和配置。
+> The image provided by Websoft9 is a software product. Its goal is to simplify the software deployment and configuration by users after optimizing the combination of open source software and open source components.
 
-## 开源
+## Open source
 
-Websoft9是一家开源软件公司，我们开源所有镜像的自动化安装脚本，基于Ansible编写。你可以通过我们 [Github主页](https://github.com/Websoft9) 获取它们并自行部署。
+Websoft9 is a open source organization, all automatic deployment code is on [Github](https://github.com/Websoft9) where you can fork it and submit issue for it.
 
-开源的好处是显而易见的，包括：
+The benefits of open source are obvious, including:
 
-* 没有预算的用户免费使用
-* 软件部署过程100%透明公开，符合开源精神
-* 让用户参与到研发中
+* You can use it free
+* The deployment is 100% transparent and open, in line with the spirit of open source
+* Any one can involve the development for it
 
-## 产品目录
+## Product list
 
-通过我们[产品目录主页](https://apps.websoft9.com/)查看所有产品
+You can list all product powered by Websoft9 from [Product Catalog Home](https://apps.websoft9.com/).
 
-## 镜像部署 VS 脚本部署
+## Deployment Comparison
 
-上面提到，通过部署我们在Github上发布的Ansible脚本，可以获得与镜像部署同等的效果。  
-那么，这两种部署方式有什么差异或优劣呢？
+As mentioned above, by deploying the automatic script we published on Github, we can get the same effect as image deployment.  
 
-|  项   |  镜像部署   |  脚本部署   |
+So, what are the differences or advantages and disadvantages of these two deployment methods?
+
+|  item   |  image deployment   |  script deployment   |
 | --- | --- | --- |
-|  部署时间   |  2-5分钟   |  20-60分钟   |
-|  部署成功率   |  99.99%   |  80%，受制于网络和地域原因，可能会部署失败   |
-|  技能要求   |  低   |  高   |
-|  安全   |  云厂商测试通过   |  内测通过   |
-|  版本   |  固定   |  适当可变   |
-|  费用   |  按需订阅  |  免费   |
-|  人工支持   |  5×8标准人工支持，7×24工单  |  通过Github提交Issue反馈故障   |
-|  源码   |  100%开源  |  100%开源   |
-|  问题反馈   |  标准人工支持  |  无人工支持之义务   |
-|  云支持   |  公有云  |  公有云，私有云   |
+|  length of time   |  2-5 minutes   |  20-60 minutes   |
+|  success rate   |  99.99%   |  80% for the reason of Network failure   |
+|  skills need   |  low  |  high   |
+|  security   |  Cloud platform test passed   |  Closed beta   |
+|  version   |  selection   |  latest you want   |
+|  cost   |  by hour  |  free   |
+|  help desk   |  5×8 help desk, 7×24 work oder  |  submit issue to Github   |
+|  source code   |  100% open source  |  100% open source   |
+|  issue support   |  Standard manual support  |  no any support   |
+|  server type   |  Public Cloud  |  Private Cloud, Public Cloud   |
 
-> 结论：镜像部署更为简单，并可以获得人工技术支持服务，适合于商业用户。
+> he image deployment is simpler, and manual technical support services can be obtained, which is suitable for commercial users.
