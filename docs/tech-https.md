@@ -8,6 +8,7 @@
 
 具体以上条件后，便可以登录服务器配置HTTPS。此处提供两种方案，请根据实际情况选择：
 
+
 ## 方案一：自动免费证书配置
 
 Websoft9的镜像默认安装了 [Let's Encrypt](https://letsencrypt.org/) 免费的证书部署软件，只需一条命令就可以启动证书部署.
@@ -73,7 +74,7 @@ Websoft9的镜像默认安装了 [Let's Encrypt](https://letsencrypt.org/) 免�
 
 ---
 
-## 证书FAQ
+## FAQs for HTTPS
 
 #### 为什么设置成功，显示“与此网站建立的连接并非完全安全”？
 

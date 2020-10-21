@@ -1,102 +1,100 @@
 ---
 sidebarDepth: 3
 ---
-# 云服务器
+# Cloud Server
 
-部署和使用开源软件，需要掌握一些基本的云服务器相关操作。
+You should have some skills about Cloud Server when you use open source software on Cloud Platform.
 
-## 云平台操作指南
+## Cloud Platform guide
 
-针对云服务器我们有数十种操作技能需要掌握，而不同云平台有一定的差异，请参考下表：
+Following is some very popular skills for different Cloud Platform：
 
-| 云平台                 | 常见操作            | 更多操作       |
-| ---------------------- | --------------------------- | --------------------------- |
-| Azure | <br />- 连接VM、管理文件、运行命令<br />- 修改安全组入方向<br /> - 云服务器自动备份<br />- 添加数据盘<br /> | [《Azure 云平台指南》](https://support.websoft9.com/docs/azure/zh) |
-| AWS | <br />- 连接EC2实例、管理文件、运行命令<br />- 修改安全组入方向<br /> - 云服务器自动备份<br />- 增加卷<br /> | [《AWS 云平台指南》](https://support.websoft9.com/docs/aws/zh) |
-| 阿里云 | <br />- 连接ECS云服务器、管理文件、运行命令<br />- 修改安全组入方向<br /> - 云服务器自动备份<br />- 增加数据盘<br /> | [《阿里云 云平台指南》](https://support.websoft9.com/docs/alibabacloud/zh) |
-| 华为云 | <br />- 连接ECS云服务器、管理文件、运行命令<br />- 修改安全组入方向<br /> - 云服务器自动备份<br />- 增加数据盘<br /> | [《华为云 云平台指南》](https://support.websoft9.com/docs/huaweicloud/zh) |
-| 腾讯云 | <br />- 连接云服务器、管理文件、运行命令<br />- 修改安全组入方向<br /> - 云服务器自动备份<br />- 增加数据盘<br /> | [《腾讯云 云平台指南》](https://support.websoft9.com/docs/tencentcloud/zh) |
+| Cloud Platform | skills            |  guide for you       |
+| ----------- | ----------------------------------- | --------------------------- |
+| Azure | <br />- Connect VM, file manage, run commands<br />- Modify the port of Security<br /> - Automatic backup for Cloud Server<br />- Add data disk<br /> | *[Azure Platform Guide](https://support.websoft9.com/docs/azure)* |
+| AWS | <br />- Connect EC2, file manage, run commands<br />- Modify the port of Security<br /> - Automatic backup for Cloud Server<br />-Add data disk<br /> | *[AWS Platform Guide](https://support.websoft9.com/docs/aws)* |
+| Alibaba Cloud | <br />-  Connect ECS, file manage, run commands<br />- Modify the port of Security<br /> - Automatic backup for Cloud Server<br />- Add data disk<br /> | *[Alibaba Cloud Platform Guide](https://support.websoft9.com/docs/alibabacloud)* |
+| HUAWEI CLOUD | <br />-  Connect ECS, file manage, run commands<br />- Modify the port of Security<br /> - Automatic backup for Cloud Server<br />- Add data disk<br /> | *[HUAWEI CLOUD Platform Guide](https://support.websoft9.com/docs/huaweicloud)* |
+| Tencent Cloud | <br />-  Connect CVM, file manage, run commands<br />- Modify the port of Security<br /> - Automatic backup for Cloud Server<br />- Add data disk<br /> | *[Tencent Cloud Platform Guide](https://support.websoft9.com/docs/tencentcloud)* |
 
-## 连接服务器（通用）
+## Connect Server
 
-如果你只需连接服务器，且已经准备好了服务器的管理员账号密码、公网IP地址等信息，可以参考下面的通用教程开始连接服务器。
+If you only need to connect to the Server, and you have prepared the server's administrator account password, Internet IP address and other information, you can refer to the following general tutorial to start connecting to the server.
 
-### 连接 Linux
+### For Linux
 
-推荐使用 SFTP工具去连接Linux。SFTP是使用SSH协议的FTP模式，也称之为安全增强型的FTP。SFTP工具是Linux用户最喜欢的一种操作方式。  
+We suggest you use SFTP to connect Linux. SFTP is an FTP mode that uses the SSH protocol, also known as security-enhanced FTP. The SFTP tool is a favorite operation mode for Linux users. The following is an example of WinSCP SFTP tool, which details the use of SFTP.
 
-下面以WinSCP这款SFTP工具为例，详细说明SFTP的使用。
+#### Configure WinSCP
 
-#### 配置WinSCP
+1. Download [WinSCP](https://winscp.net/) and install it, then start it to create a new connection
+2. The following is based on the cloud server's **password verification** and **key-key pair** verification:
+   - Password authentication(the most common way)
+     ![Password authentication](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/winscp-newsite.png)
+   - Key-key pair authentication
+     ![Key-key pair authentication](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/winscp-secrets-websoft9.png)
+3. You may want to save your session details to a site so you do not need to type them in every time you want to connect. Press Save button and type site name.
+   ![Save session](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/winscp-sessionsave-websoft9.png)
+4. Successfully connected interface
+   ![WinSCP GUI](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/websoft9-winscp-success.png)
 
-1. 下载[WinSCP](https://winscp.net/) ，安装后，启动并新建一个连接
-2. 根据云服务器的 **密码验证和秘钥对** 两种验证方式分别说明：
-   - 密码验证方式设置（最常见的方式）
-     ![密码验证方式](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-newsite.png)
-   - 秘钥对验证方式设置
-     ![秘钥对验证方式](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-secrets-websoft9.png)
-3. 验证方式设置好之后，点击"登录"。登录中过程中，系统提示您是否保存登录信息，选择"是"
-4. 成功连接后的界面
-   ![WinSCP管理界面](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/websoft9-winscp-success.png)
+#### Manage Files
 
-#### 管理文件
+WinSCP can easily upload and download files by dragging and dropping, and can perform various settings and operations on files (folders).
 
-WinSCP 通过拖拽，就可以方便上传下载文件，可以对文件（夹）可以对进行多种设置与操作
-
-1. 一般来说网站的文件都放在 */data/wwwroot* 目录下夹
+1. In general, the files on the website are placed in the */data/wwwroot* directory.
    ![upload files](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/winscp-dragfile-websoft9.png)
 
-2. 右键单击服务器上一个文件或文件夹，可以对云服务器进行多种操作
-   ![管理文件](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/websoft9-winscp-youjian.png)
+2. You can perform multiple operations on the VM by right-clicking on a file or folder on the server.
+   ![Setting file](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/websoft9-winscp-youjian.png)
 
-3. 以修改文件权限为例的相关界面如下
+3. The relevant interface for modifying file permissions is as follows:
 
-   ![管理文件](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/websoft9-winscp-quanxian.png)
+   ![Group and Owner settings](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/websoft9-winscp-quanxian.png)
 
-#### 运行命令
+#### Run Command
 
-WinSCP是自带命令运行功能的，虽然命令功能仅限于运行非交互式命名（即命令执行过程中无需反馈和过程中的输入），但对于初学者确简单实用。
+WinSCP has a built-in command run function. Although the command function is limited to running non-interactive naming (that is, no feedback and process input are required during command execution), it is simple and practical for beginners.
 
-1. WinSCP登录到服务器，点击菜单来的命令窗口图标（快捷键Ctrl+T也可以）
-   ![命令行工具](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/winscp-ucmd-websoft9.png)
-2. 在弹出的命令运行窗口执行命令（每次一条命令），以查询内存使用为例，运行命令 `free -m`
-   ![命令行工具](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/wincp-showmemory-websoft9.png)
+1. WinSCP logs in to the server, click on the command window icon from the menu (shortcut Ctrl+T is also available)
+   ![Command of Winscp](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/winscp-ucmd-websoft9.png)
+2. In the pop-up command run window to execute the command (one command at a time), to query the memory usage as an example, run the command `free -m`
+   ![Command of Winscp](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/wincp-showmemory-websoft9.png)
 
-#### 集成Putty
+#### Putty Integration
 
-在某些特定的常见下，可能需要使用Putty来运行命令。由于Putty是一个命令操作界面，每次使用的时候都需要输入root密码，如果密码比较复杂，会让人感觉比较麻烦。其实WinSCP是可以集成Putty的，集成后，通过WinSCP就可以打开Putty，自动登录到服务器。
+Under certain specificities, you may need to use [Putty](https://putty.org/) to run commands. Since Putty is a command operation interface, you need to enter the root password every time you use it. If the password is complicated, it will make people feel more troublesome. In fact, WinSCP can be integrated with Putty. After integration, you can open Putty through WinSCP and log in to the server automatically.
 
-1. 打开Winscp-选项-集成-应用程序。Putty/terminal客户端路径这里为你本地putty.exe程序的路径
-   ![命令行工具](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/websoft9-winscp-putty.png)
-2. 集成成功后，只需要通过Winscp的窗口快捷方式即可打开Putty
-   ![命令行工具](http://libs.websoft9.com/Websoft9/DocsPicture/zh/winscp/websoft9-winscp-puttyopen.png)
+1. Open the Preferences of WinSCP->Integration->Application, and input the local address of your Putty, click OK
+   ![Putty Address](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/websoft9-winscp-putty.png)
+2. After the integration is successful, you only need to open the Putty through Winscp's window shortcut.
+   ![Open Putty on WinSCP](http://libs.websoft9.com/Websoft9/DocsPicture/en/winscp/websoft9-winscp-puttyopen.png)
 
-> 通过Winscp打开Putty操作与直接打开putty没有区别
+### For Windows
 
-### 连接 Windows
+You can connect to the Window server through the Remote Desktop Tool (MSTSC) on your local computer.  
 
-可以通过本地电脑的远程桌面工具 (MSTSC) 连接 Window 服务器。具体步骤如下：
+Below is the steps of MSTSC connection
 
-1. 登录Azure Portal，找到需要登录的服务器的**公网IP地址**
-   ![image.png](https://libs.websoft9.com/Websoft9/DocsPicture/zh/azure/azure-publicip-websoft9.png)
+1. Log in Cloud platform console, get you **Internet IP Address of Cloud Server**
 
-2. 选择一种打开本地电脑远程桌面的方式（三选一）:
+2. Choose a way to open a local computer remote desktop (three-in-one):  
+   - Open **Start** -> **Remote Desktop**
+   - Open **Start**, input "mstsc" directly, the system will search for the Remote Desktop
+   - Using the keyboard **Windows Logo** + **R** to start the command windows, input input "mstsc" to open the Remote Desktop
 
-   - 打开 **开始菜单** -> **远程桌面连接**
-   - 打开 **开始菜单**，输入”mstsc“ ，系统会搜索远程桌面连接工具
-   - 通过 **Windows Logo** + **R** 打开系统的命令窗口，输入”mstsc“来启动远程桌面连接工具
+3. In the Remote Desktop Connection dialog, enter the Internet IP address of the instance. Then click 【Show Options】
 
-3. 打开远程桌面连接，输入公网IP地址
+   ![img](http://libs.websoft9.com/Websoft9/DocsPicture/en/common/windows-remote001-websoft9.png)
 
-   ![img](http://libs.websoft9.com/Websoft9/DocsPicture/zh/windows/windows-remote.png)
+4. Enter the user name,check Allow me to save credentials. In this way, you do not need to manually enter the password again when you log on later.
 
-4. 通过更多选项，设置默认用户名，例如”Administrator“，并勾选”允许我保存凭据“
+   ![img](http://libs.websoft9.com/Websoft9/DocsPicture/en/common/windows-remote002-websoft9.png)
 
-   ![img](http://libs.websoft9.com/Websoft9/DocsPicture/zh/windows/windows-remote-login.png)
-
-5. 点击连接，成功后会看到Windows界面
+5. Click the Connect button to complete connection to the instance.
    ![image.png](http://libs.websoft9.com/Websoft9/DocsPicture/en/azure/azure-windows2019desktop-websoft9.png)
 
-6. 远程登录后，就可以直接从本地**拷贝**文件，然后**粘贴**文件到服务器上。
+6. After logging in remotely, you can **copy** the file directly from the local and **paste** the file to the server.
    ![img](https://libs.websoft9.com/Websoft9/DocsPicture/en/azure/azure-copyfilewin-websoft9.png)
-7. 如果需要使用FTP，需要自行安装FTP软件（推荐使用FileZilla Server）
+
+> If you need to use FTP on Windows or Linux, you need to install the FTP Sever yourself

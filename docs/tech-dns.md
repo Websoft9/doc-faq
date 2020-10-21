@@ -1,58 +1,50 @@
-# 域名
+# Domain Name
 
-域名的目的是通过一段容易识别的文字段来指向服务器上的网站。如果没有域名，网站就只能通过IP地址访问，这样不便于记忆和识别。
+The purpose of the Domain Name (DNS) is to point to the website on the server through an easily identifiable paragraph. If there is no domain name, the website can only be accessed through the IP address, which is not easy to remember and identify.
 
-## 域名配置步骤
+## Configure DNS
 
-为了使网站可以通过域名访问，配置域名分为两个步骤：
+If you want to configure DNS for your website, the following steps is for you:  
 
-*   **域名解析**：在域名的控制台上做一个将域名（或子域名）指向IP的操作(下图示例)
+*   **DNS resolution**: Make your DNS or sub DNS point to a IP address of Server
 ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/common/domain-websoft9.png)
 
-*   **域名绑定**：域名绑定指一台服务器在多网站部署的时候，通过**虚拟主机配置文件**，将每个域名绑定到其对应的网站目录，从而达到每个网站都可以通过域名访问且相会不会干扰的效果。
+*   **DNS binding**: Binding your DNS to a special application directory by modify the **vhost configuration file** when their have more than two websites or applications on your Server.
 
-下面是一个虚拟配置文件范例（LAMP环境）：
+Following is one sample for LAMP runtime DNS binding:
 
    ~~~ 
-<VirtualHost *:80>
-ServerName www.mydomain.com
-ServerAlias other.mydomain.com
-DocumentRoot "/data/wwwroot/default/mysite2"
-ErrorLog "/var/log/httpd/www.mydomain.com_error_apache.log"
-CustomLog "/var/log/httpd/www.mydomain.com_apache.log" common
-<Directory "/data/wwwroot/default/mysite1">
-Options Indexes FollowSymlinks
-AllowOverride All
-Require all granted
-</Directory>
-</VirtualHost>
+   <VirtualHost *:80>
+   ServerName www.mydomain.com
+   ServerAlias other.mydomain.com
+   DocumentRoot "/data/wwwroot/default/mysite2"
+   ErrorLog "/var/log/httpd/www.mydomain.com_error_apache.log"
+   CustomLog "/var/log/httpd/www.mydomain.com_apache.log" common
+   <Directory "/data/wwwroot/default/mysite1">
+   Options Indexes FollowSymlinks
+   AllowOverride All
+   Require all granted
+   </Directory>
+   </VirtualHost>
    ~~~
 
-通过修改配置文件中域名相关的值（ServerName,ServerAlias等）实现绑定域名
+You can modify the item **ServerName, ServerAlias** to implement DNS binding.
 
-> 配置文件主要包括域名与网站的对应的关系，即某个域名应该对应访问哪个目录。如果服务器上有多个网站，就必须对应多个配置文件。
+> The configuration file mainly includes the corresponding relationship between the Domain Name and the website, that is, which directory a Domain Name should correspond to. If there are multiple websites on the server, it must correspond to multiple configuration files.
 
-## 域名杂谈
+## FAQs for DNS
 
-我们在实践中，发现大家对域名的理解和描述有一些偏差，下面来个“正本清源”：
+Here are the FAQs you may need:  
 
-#### 什么是一级域名？二级域名？
+#### First-level domain name Second-level domain name?
 
-当您成功注册了一个域名，就是拥有了一个一级域名，类似： abc.com ，
-通过一级域名，可以设置出无数个二级域名，类似：www.abc.com 或 help.abc.com
+When you completed one Domain, you owned a first-level Domain Name, e.g abc.com  
+When you completed one DNS resolution for your website, e.g www.abc.com, this is a second-level Domain Name  
 
-> 如何设置二级域名？进入域名厂商提供的域名控制台设置。
+#### How do domain names and servers associate?
 
-#### 域名与服务器如何建立关联？
+The domain name needs to be resolved to the server through the **A record** to establish an association with the server. After the domain name is resolved to the server IP, the server will use the "domain name configuration file (vhost file)" to determine the mapping relationship between multiple domain names and multiple websites
 
-域名需要通过A记录的方式解析到服务器才能与服务器建立关联，域名解析到服务器IP之后，服务器会通过“域名配置文件（虚拟主机文件）”来判断多个域名与多个网站之间的映射关系
+#### How does the server recognize the level of the domain name?
 
-#### 服务器如何识别域名的级别？
-
-不管是一级域名还是二级域名，对服务器来说都是不同的域名，abc.com 和 www.abc.com 对服务器来说两个独立的域名，即服务器不识别域名的级别。
-
-#### 域名如何备案？
-
-备案是中国大陆的一项法规，使用大陆节点服务器开办网站的用户，需要在服务器提供商处提交备案申请。
-
-域名备案是纯粹的商务流程，需要登录到云平台的备案系统中完成备案。
+abc.com and www.abc.com are different Domain Name for Cloud Server.

@@ -8,7 +8,7 @@ footer: MIT Licensed | Copyright © 2019 Websoft9
 
 # Most Common Problems
 
-Problems listed below are mainly **technical problems**. For **non-technical problems**, please refer to [this section](/bz-faq.md).
+Problems listed below are mainly **technical problems**. For **non-technical problems**, refer to [business faq](/bz-faq.md).
 
 ## Is there a Guide for the product?
 
@@ -182,20 +182,20 @@ The most common operation of Security Group configuration is to enable one port,
 
 Different Cloud Platforms have different operations. To set Security Group, refer to [Instance](/tech-instance.md).
 
-## 应用源码存放在哪里？
+## Where is the root directory of application?
 
-由 Websoft9 提供的应用，规划了统一的存放目录：
+Websoft9 have standardized the directory:
 
-* */data/wwwroot/appname*  存放应用本体，appname 即应用名称，例如：wordpress
-* */data/apps* 存放应用所需的支持工具，例如 phpmyadmin
+* */data/wwwroot/appname*  the application directory, appname is the product name, e.g. wordpress
+* */data/apps* the tools for application, e.g. phpmyadmin
 
-## 如何修改网站根目录？
+## How to modify the root directory?
 
-当你部署运行环境镜像后，默认网站目录为：`/data/wwwroot/example`，也就是一个示例目录。  
+When completed the deployment of image, you have a default example directory:`/data/wwwroot/example`   
 
-如果需要修改为其他目录，需要找到对应的**虚拟主机配置文件**，修改其中的网站路径配置项即可。
+If you wan to modify its name, path, you just need to modify the **vhost configuration file**:
 
-下面以 Nginx 为例，root 字段即对应的网站目录地址：
+Following is the sample of Nginx vhost configuration file:
 
 ```
 server
@@ -210,105 +210,40 @@ access_log  /var/log/nginx/example.yourdomain.com-access.log;
 }
 ```
 
-> 服务器都可以部署多个网站。对其中某一个网站来说，其对应的存放目录才可以称之为**根目录**。
+> You should known that one Cloud Sever can deploy many websites or applications. The **root directory** is just for one of the websites, it means that one website have one root directory.
 
-## 升级或安装扩展时网络超时？
+## The network is timeout when upgrade on install plugins?
 
-在使用 WordPress, ownCloud 等应用时，可能出现在线升级等操作由于网络原因导致失败。  
+You may have network timeout error when you upgrading or installing plugins for WordPress and ownCloud.
 
-**常见网络超时场景**
+**Common network timeout scenarios**
 
-* 在线升级
-* 应用市场安装插件
-* 在应用提供商的平台上注册账号
-* 程序中的 reCAPTCHA 验证
-* Google 地图
-* 程序代码中第三方资源（CSS/JS等）
-* Docker pull 镜像
-* yum / apt 升级
+* Online upgrade
+* Install plugins or extensions in Marketplace
+* Register account in application
+* reCAPTCHA verify 
+* Google maps or fonts
+* The third resources in your application codes, e.g.  CSS/JS
+* Docker pull image
+* yum / apt update
 
-**出现这个情况的原因是什么呢？**  
+**Why this problem?**  
 
-主要是需要访问的资源（或服务）是存放在应用提供商的国外服务器中，而 *应用服务器 -- 应用提供商服务器* 受制于地域原因，可能会出现偶尔或持续网络不通的情况。  
+The main reason is that the resource (or service) that needs to be accessed is stored in the foreign server of the application provider, and *application server - application provider server* is subject to regional reasons, and occasional or continuous network failure may occur.
 
-一旦网络不通，那么以上场景所对应的服务自然无法访问，最后只能接受系统超时的结果。  
+Once the network is unavailable, the services corresponding to the above scenarios are naturally inaccessible, and finally the result of the system timeout can be accepted.
 
-**如何解决？**
+**How to solve it?**
 
-既然是网络不通导致，而我们又无法对应用提供商服务器的网络做出任何动作。显然，只有从应用或应用所在的服务器网络情况做出应对，才能探索合适的解决方案：
+Since the network is blocked, and we can't make any action on the network of the application provider server. Obviously, only by responding to the application or the server network situation where the application is located can we explore a suitable solution:
 
-1. 修改应用中的代码，将网络不通的服务替换。例如：更换 Docker 仓库地址。
-2. 临时修改应用自身的网络访问，让应用可以直接与应用提供商服务器连通。例如：在 WordPress 中安装代理插件，临时让 WordPress 访问国外的升级服务器。
-3. 临时改变自身服务器的网络，使之与应用提供商服务器连通。例如：应用服务器中安装代理客户端，使应用服务器可以通过代理去访问国外升级服务器。
+1. Modify the code in the application to replace the service that is not connected to the network. For example: change the Docker warehouse address.
+2. Temporarily modify the application's own network access so that the application can directly connect with the application provider server. For example: install a proxy plug-in in WordPress to temporarily allow WordPress to access the upgrade server abroad.
+3. Temporarily change the network of its own server to connect it with the application provider server. For example: install a proxy client in the application server so that the application server can access the foreign upgrade server through the proxy.
 
-以上提出的方案基本包括涵盖全部场景，但详细操作需根据具体的应用而定。
+The scheme proposed above basically covers all scenarios, but the detailed operation depends on the specific application.
 
-## 网站访问很慢？
+## You need our help desk?
 
-网站慢最常见的原因包括如下几个方面：
-
-* 带宽不够
-* 服务器满负荷运转
-* 图片、视频、CSS/JS等静态资源太多
-
-我们在大量的实践中，发现中国的云用户（国外的云平台用户没有这个问题）普遍存在**带宽不够**的问题。  
-
-为什么会出现这样的问题呢？
-
-一方面是由特殊带宽计费商业模式导致，另外一方面中国地区的用户对带宽的大小是没有概念的，是模糊乃至错误的认知。  
-
-**举例说明：**
-
-如果您拥有**2M**的**包年包月**带宽，打开一个首页大概为4M的网站，大概需要几秒时间？
-
-80%的用户认为应该是在2-3s内打开，实际上呢？
-
-```
-1M 带宽 = 128k/s 的下载速度
-2M 带宽 = 256k/s 的下载速度
-4M 页面的最小下载速度：4000k/256=15.6s
-```
-
-这个15.6s还没有考虑服务器的计算、网络延时等时间，所以访问一个带宽只有2M带宽的网站，需要20s也就不足为奇了。
-
-**如何正确选择带宽？**
-
-正确的方式：服务器采用**按量付费的带宽**，带宽的大小设置为最大（有些云平台高达 300M/s）
-
-> 国外的主流云厂商，没有包年包月带宽这种选项，故没有错误选择带宽的困扰。
-
-带宽大小与费用没有关系。按量付费规则下，是根据服务器的被下载量计算费用，用多少给多少。
-
-**例如**：当前网站所有访问加起来的下载量为：5G，费用大概是：5×0.5 = 2.5元
-
-另外针对静态资源较多的情况，我们建议：
-
-1. 采用CDN
-2. 网站图片超过1000张，建议从服务器中分离出去
-
-以上方案简单可靠，降低服务器资源消耗，实现成本较低，效果好。
-
-## 云平台提示漏洞？
-
-云平台不断提醒系统有漏洞或潜在威胁，会不会是镜像默认存在病毒或木马、后门等不安全因素？
-
-**首先，可以肯定的说，绝对不会默认存在病毒或木马、后门**
-
-但需要澄清的是，仅保证**默认**不存在，但是后续出现又是正常的。
-
-软件本身是不断升级迭代发展的，漏洞总是从发现到打补丁的循环中不断成长。镜像中包括：操作系统、中间件、数据库、语言等软件包，没一个软件包都有可能有漏洞。
-
-最新的漏洞就会被发现，云平台就会第一时刻通知到用户，这反而是一件好事。
-
-总而言之，软件的安全是动态系统，软件的本质决定没有人能够在安全上做到“万无一失，疏而不漏”。
-
-另外，从商务角度看，云平台会有监管镜像产品的责任，间接的保障用户的安全：
-
-* 合作选择：保证服务商有丰富的云服务器系统维护和环境配置经验，拥有专业的运维团队；
-* 流程控制：要求服务商严格遵循《云平台安全审核标准》，只有通过安全审核的镜像才可以售卖；
-* 合规机制：要求服务商须与每一个用户签订《镜像使用许可协议》，对镜像安全向用户作出承诺；
-
-## 需要人工服务？
-
-* 如果您在云平台订阅了我们的收费镜像，您可以享受人工服务，参考：[联系方式](https://support.websoft9.com/zh/contact.html)
-* 如果您没有订阅我们的镜像，请到我们的 Github 上的[开源项目](https://github.com/websoft9)中提交 Issue 获取支持。
+* If you have subscribed image on Cloud Platform, you can get help desk by[Professional support](https://support.websoft9.com/contact.html)
+* If you don't have subscribed image on Cloud Platform, please submit issues on [Github repository](https://github.com/websoft9)
