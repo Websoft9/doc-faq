@@ -110,7 +110,7 @@ Websoft9的镜像默认安装了 [Let's Encrypt](https://letsencrypt.org/) 免�
 
 需要注意的是，两端 HTTPS 必须使用同一套证书。
 
-#### HTTP 自动跳转到 HTTPS 页面
+#### Apache 实现 HTTP 自动跳转到 HTTPS 页面
 
 建议在网站根目录下的.htacesss文件中增加redirect规则
 
@@ -131,6 +131,35 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteCond %{REQUEST_URI} folder
 RewriteRule ^(.*)$ https://www.yourdomain.com/folder/$1 [R,L]
+```
+
+#### Nginx 实现 HTTP 自动跳转到 HTTPS 页面
+
+建议在 Nginx 虚拟主机配置文件对应的网站配置段中增加跳转项 `if...`
+
+```
+server
+{
+     listen 80;
+     server_name www.websoft9.com;
+     index readme.html index.html index.htm;
+     root  /data/nas/www.websoft9.com;
+     error_log /var/log/nginx/www.websoft9.com-error.log crit;
+     access_log  /var/log/nginx/www.websoft9.com-access.log;
+     include conf.d/extra/*.conf;  
+    
+    # HTTP to HTTPS
+    if ($scheme = http) {
+        return 301 https://$host$request_uri;
+    } 
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/www.websoft9.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/www.websoft9.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot  
+}
+
 ```
 
 #### Android 无法使用HTTPS，而IOS可以？
