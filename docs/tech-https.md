@@ -101,7 +101,7 @@ If you want to use CDN, there have two HTTPS configurations for you:
 
 And make sure use the same Certification files on your Cloud Server and CDN.
 
-#### How to enable HTTP redirect to HTTPS?
+#### How to enable HTTP redirect to HTTPS on Apache?
 
 For Apache, suggest your add the redirect rules in the file **.htacesss** of your application root directory
 
@@ -122,6 +122,17 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteCond %{REQUEST_URI} folder
 RewriteRule ^(.*)$ https://www.yourdomain.com/folder/$1 [R,L]
+```
+
+#### How to enable HTTP redirect to HTTPS on Nginx?
+
+Please use add the following rules in the Nginx vhost configuration file `server { }`
+
+```
+# HTTP to HTTPS
+if ($scheme = http) {
+    return 301 https://$host$request_uri;
+
 ```
 
 #### Android cannot use HTTPS, but IOS can?
